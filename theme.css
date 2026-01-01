@@ -1,0 +1,41 @@
+/* theme.css */
+
+@theme {
+  /* SGX Base Colors */
+  --color-sgx-white: #ffffff;
+  --color-sgx-blue-500: #0b2368;
+  --color-sgx-green-500: #a4dd36;
+  --color-sgx-yellow-500: #ffcc00;
+  --color-sgx-lightBlue-500: #0094b3;
+  --color-sgx-red-500: #bf0052;
+  --color-sgx-purple-500: #7f1e75;
+  --color-sgx-darkGrey-500: #5f6062;
+  --color-sgx-lightGrey-500: #9c9e9f;
+
+  /* Backgrounds */
+  --color-sgx-bg-blue: #e4efff;
+  --color-sgx-bg-green: #f6f9de;
+  --color-sgx-bg-grey: #f2f2f2;
+  --color-sgx-bg-lightBlue: #d8e2f9;
+
+  /* === HeroUI Theme Overrides (SGX Branding) === */
+
+  /* Primary — SGX Blue */
+  --color-primary: var(--color-sgx-blue-500);
+
+  /* Secondary — SGX Purple */
+  --color-secondary: var(--color-sgx-purple-500);
+
+  /* Success — SGX Green */
+  --color-success: var(--color-sgx-green-500);
+
+  /* Warning — SGX Yellow */
+  --color-warning: var(--color-sgx-yellow-500);
+
+  /* Danger — SGX Red */
+  --color-danger: var(--color-sgx-red-500);
+
+  /* Default/Neutral — SGX Grey */
+  --color-default: var(--color-sgx-lightGrey-500);
+}
+

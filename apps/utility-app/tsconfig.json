@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+  "baseUrl": ".",
+  "rootDirs": ["src", "../../packages/shared/src", "../../packages/ui/src"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "shared/*": ["../../packages/shared/src/*"],
+      "@mf/ui": ["../../packages/ui/src/index.ts"],
+      "@mf/ui/*": ["../../packages/ui/src/*"],
+      "@mf/shared": ["../../packages/shared/src/types/index.ts"],
+      "@mf/shared/*": ["../../packages/shared/src/*"]
+    }
+  },
+  "include": ["src", "../../packages/shared/src", "../../packages/ui/src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
