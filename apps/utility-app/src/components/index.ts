@@ -6,6 +6,7 @@ export { default as Table } from './Table/Table';
 export { default as Tabs } from './Tabs/Tabs';
 export { default as CustomTabs } from './CustomTabs/CustomTabs';
 export { default as HeroButton } from './HeroButton/HeroButton';
+export { default as Accordion } from './Accordion/Accordion';
 
 // Re-export shared types from central shared package
 export type {
@@ -19,6 +20,8 @@ export type {
 	TabsProps,
 	CustomTab,
 	CustomTabsProps,
+	AppAccordionProps,
+	AppAccordionItemProps,
 } from '@mf/shared/src/types';
 
 export type { ButtonProps as HeroButtonProps } from './HeroButton/HeroButton.Types';

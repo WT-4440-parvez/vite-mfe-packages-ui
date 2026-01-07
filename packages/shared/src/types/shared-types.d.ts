@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNode, ReactElement } from 'react';
 import type {ButtonProps as BaseButtonProps} from "@heroui/button";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -90,4 +90,22 @@ export interface CustomTabsProps {
   onSelectionChange: (key: string) => void;
   children: React.ReactNode;
   className?: string;
+}
+
+export type AccordionChild = ReactElement | ReactElement[] | null;
+
+export interface AppAccordionProps {
+  children: AccordionChild;
+  variant?: "splitted" | "bordered" | "light" | "shadow";
+  selectionMode?: "single" | "multiple";
+  defaultExpandedKeys?: Iterable<string>;
+  className?: string;
+}
+
+export interface AppAccordionItemProps {
+  itemKey: string;
+  title: string;
+  ariaLabel?: string;
+  isDisabled?: boolean;
+  children: ReactNode;
 }
