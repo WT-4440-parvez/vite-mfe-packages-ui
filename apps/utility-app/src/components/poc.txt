@@ -1,0 +1,177 @@
+You are an experienced cloud and backend engineer.
+I need you to generate a Proof of Concept (POC) for Amazon MWAA (Managed Workflows for Apache Airflow) focusing on collecting DAG execution metrics and controlling DAG runs using the Airflow REST API.
+
+Important constraints and context:
+
+MWAA is a fully managed AWS cloud service, not on-premises
+
+Metrics collection must be done using Airflow REST API (Option 4)
+
+Implementation language must be Java (not Python)
+
+Authentication must follow AWS-recommended MWAA approach
+
+POC should be suitable for enterprise review / architecture discussion
+
+1️⃣ POC DOCUMENT REQUIREMENTS
+
+Create a clear, structured POC document with the following sections:
+
+A. Overview
+
+What MWAA is
+
+Why Airflow REST API is used for metrics & control
+
+Scope and limitations of the POC
+
+B. Architecture
+
+High-level architecture diagram (described textually)
+
+Components involved:
+
+AWS IAM
+
+MWAA Webserver
+
+Airflow REST API
+
+Java POC application
+
+Authentication flow:
+
+AWS credentials → CreateWebLoginToken → Bearer token → Airflow API
+
+C. Authentication Flow
+
+Why AWS Access Keys cannot be used directly
+
+How CreateWebLoginToken works
+
+Token expiry considerations
+
+D. Metrics Collected via Airflow API
+
+DAG success/failure rate
+
+DAG run duration
+
+Task success/failure and retry counts
+
+SLA delay detection (derived)
+
+Scheduler / system health
+
+Map each metric to specific API endpoints.
+
+E. Supported Use Cases
+
+Fetch DAG run details and runtime config
+
+Identify failed tasks in a DAG run
+
+Re-run DAG execution from a specific task
+
+Trigger a new DAG run with the same configuration
+
+F. Limitations
+
+No infra metrics (CPU/memory)
+
+No mid-task restart
+
+Rate limits and token expiry
+
+2️⃣ JAVA POC IMPLEMENTATION REQUIREMENTS
+
+Provide Java-based code examples using:
+
+AWS SDK v2
+
+Apache HTTP Client or equivalent
+
+Include the following:
+
+A. Maven Dependencies
+
+AWS MWAA SDK
+
+HTTP client dependencies
+
+B. Java Utility to Generate MWAA Web Login Token
+
+Use CreateWebLoginToken
+
+Accept environment name and region
+
+C. Java HTTP Client Wrapper
+
+Handle GET and POST requests
+
+Pass Bearer token in headers
+
+D. Example API Calls
+
+Get DAG run details (including conf)
+
+List task instances for a DAG run
+
+Clear task instances to re-run from a specific step
+
+Trigger a new DAG run with config
+
+E. Example Execution Flow
+
+Generate token
+
+Call Airflow API
+
+Parse response
+
+Handle token expiration gracefully
+
+3️⃣ AIRFLOW API ENDPOINTS TO USE
+
+Include and explain usage of:
+
+GET /api/v1/dags
+
+GET /api/v1/dags/{dag_id}/dagRuns/{dag_run_id}
+
+GET /api/v1/dags/{dag_id}/dagRuns/{dag_run_id}/taskInstances
+
+POST /api/v1/dags/{dag_id}/clearTaskInstances
+
+POST /api/v1/dags/{dag_id}/dagRuns
+
+GET /api/v1/health
+
+4️⃣ IAM REQUIREMENTS
+
+Provide required IAM policy:
+
+airflow:CreateWebLoginToken
+
+Explain how this policy is used in:
+
+Local Java execution
+
+EC2 / Lambda / container execution
+
+5️⃣ DELIVERABLE EXPECTATION
+
+Output must include:
+
+A POC document (enterprise-ready, well-structured)
+
+Runnable Java code snippets
+
+Clear explanations for each step
+
+Best practices and common pitfalls
+
+Assume the audience is cloud architects and senior engineers.
+
+Do NOT include Python examples.
+Do NOT assume on-prem deployment.
